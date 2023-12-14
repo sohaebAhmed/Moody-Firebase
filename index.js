@@ -1,6 +1,9 @@
 /* === Imports === */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"
-import { getAuth } from "firebase/auth"
+import { getAuth, 
+         createUserWithEmailAndPassword, 
+         signInWithEmailAndPassword,
+         signOut } from "firebase/auth"
 
 /* === Firebase Setup === */
 const firebaseConfig = {
@@ -50,14 +53,43 @@ function authSignInWithGoogle() {
 }
 
 function authSignInWithEmail() {
-    console.log("Sign in with email and password")
+    
+    const email = emailInputEl.value
+    const password = passwordInputEl.value
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            showLoggedInView()
+        })
+        .catch((error) => {
+            console.error(error.message)
+        })
 }
 
 function authCreateAccountWithEmail() {
-    console.log("Sign up with email and password")
+
+    const email = emailInputEl.value
+    const password = passwordInputEl.value
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            showLoggedInView()
+        })
+        .catch((error) => {
+            console.error(error.message)
+        })
 }
 
 /* == Functions - UI Functions == */
+
+function authSignOut() {
+ 
+    signOut(auth).then(() => {
+        showLoggedOutView()
+        }).catch((error) => {
+            console.error(error.message)
+        })
+}
 
 function showLoggedOutView() {
     hideElement(viewLoggedIn)

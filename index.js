@@ -17,9 +17,10 @@ import { getFirestore,
          orderBy,
          doc,
          updateDoc,
-         deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"
+         deleteDoc } from "firebase/firestore"
 
 /* === Firebase Setup === */
+/* IMPORTANT: Replace this with your own firebaseConfig when doing challenges */
 
 const firebaseConfig = {
     apiKey: "AIzaSyA3v6lb8zIBFXvpzGT6SVRrIqqiHqzeatw",

@@ -483,7 +483,9 @@ function resetAllMoodElements(allMoodElements) {
     moodState = 0
 }
 
-
+function returnMoodValueFromElementId(elementId) {
+    return Number(elementId.slice(5))
+}
 
 /* == Functions - UI Functions - Date Filters == */
 

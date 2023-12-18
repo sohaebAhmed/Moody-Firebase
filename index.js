@@ -156,27 +156,7 @@ function authSignOut() {
 
 /* = Functions - Firebase - Cloud Firestore = */
 
-async function addPostToDB(postBody, user) {
-    try {
-        const docRef = await addDoc(collection(db, collectionName), {
-            body: postBody,
-            uid: user.uid,
-            createdAt: serverTimestamp(),
-            mood: moodState
-        })
-        console.log("Document written with ID: ", docRef.id)
-    } catch (error) {
-        console.error(error.message)
-    }
-}
 
-async function updatePostInDB(docId, newBody) {
-    const postRef = doc(db, collectionName, docId);
-
-    await updateDoc(postRef, {
-        body: newBody
-    })
-}
 
 async function deletePostFromDB(docId) {
     await deleteDoc(doc(db, collectionName, docId))

@@ -452,7 +452,15 @@ function displayDate(firebaseDate) {
 
 /* = Functions - UI Functions - Mood = */
 
-
+function selectMood(event) {
+    const selectedMoodEmojiElementId = event.currentTarget.id
+    
+    changeMoodsStyleAfterSelection(selectedMoodEmojiElementId, moodEmojiEls)
+    
+    const chosenMoodValue = returnMoodValueFromElementId(selectedMoodEmojiElementId)
+    
+    moodState = chosenMoodValue
+}
 
 function changeMoodsStyleAfterSelection(selectedMoodElementId, allMoodElements) {
     for (let moodEmojiEl of moodEmojiEls) {
